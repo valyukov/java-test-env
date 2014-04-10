@@ -14,6 +14,11 @@ execute 'git clone project' do
     command "git clone #{node[:git][:repo]} #{node[:dir]}"
 end 
 
+execute 'git checkout' do
+	command "git checkout #{node[:git][:branch]}"
+	cwd node[:dir]
+end
+
 execute 'mvn test' do 
     command 'mvn test'
     cwd node[:dir]
